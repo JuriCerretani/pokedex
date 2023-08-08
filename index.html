@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="title">
+        <p>Poke<span style="color: red">dex</span></p>
+    </div>
+    <div class="input">
+        <input type="text" id="search" placeholder="Cerca ...">
+    </div>
+
+    <div class="container"></div>
+
+    <div class="info__card">
+        <button class="close" onclick="hideInfo()">X</button>
+        <div class="pokemon__name"></div>
+        <div class="imgs">
+            <img style="min-width: 120px;">
+        </div>
+        <div class="pokemon__types">
+
+        </div>
+        <div class="pokemon__desc">
+            <div>
+                <div>Peso:</div>
+                <div class="weight"></div>
+            </div>
+            <div>
+                <div>Altezza:</div>
+                <div class="height"></div>
+            </div>
+        </div>
+
+        <div class="stats">
+            <div>
+                <div>Hp <span class="hp_value"></span></div>
+                <div class="bar">
+                    <span class="hp"></span>
+                </div>
+            </div>
+            <div>
+                <div>Attacco <span class="attack_value"></span></div>
+                <div class="bar">
+                    <span class="attack"></span>
+                </div>
+            </div>
+            <div>
+                <div>Difesa <span class="defense_value"></span></div>
+                <div class="bar">
+                    <span class="defense"></span>
+                </div>
+            </div>
+            <div>
+                <div>Attacco Speciale <span class="special-attack_value"></span></div>
+                <div class="bar">
+                    <span class="special-attack"></span>
+                </div>
+            </div>
+            <div>
+                <div>Difesa Speciale <span class="special-defense_value"></span></div>
+                <div class="bar">
+                    <span class="special-defense"></span>
+                </div>
+            </div>
+            <div>
+                <div>Velocità <span class="speed_value"></span></div>
+                <div class="bar">
+                    <span class="speed"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
