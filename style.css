@@ -1,4 +1,6 @@
 *{
+    margin: 0;
+    padding: 0;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 .title p{
@@ -201,4 +203,20 @@
     border-radius: 8px;
     background: limegreen;
     transition: all 0.5s ease-in-out;
+}
+
+@media screen and (max-width: 600px) {
+    .info__card {
+      width: 90vw;
+      height: fit-content;
+    }
+
+    .card{
+        padding: 0.5rem 1rem;
+        width: 30% !important;
+    }
+
+    .card img{
+        max-width: 80px !important;
+    }
 }
