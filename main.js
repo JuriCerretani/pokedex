@@ -1,7 +1,7 @@
 const input = document.querySelector("#search");
 
 input.addEventListener("input", () => {
-    fetch('https://pokeapi.co/api/v2/pokemon?limit=1010')
+    fetch('https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0')
     .then(response => response.json())
     .then(allpokemon => {
         let res = allpokemon.results
@@ -10,7 +10,7 @@ input.addEventListener("input", () => {
 })
 
 function fetchKantoPokemon(){
-    fetch('https://pokeapi.co/api/v2/pokemon?limit=1010')
+    fetch('https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0')
     .then(response => response.json())
     .then(allpokemon => {
         let res = allpokemon.results
@@ -28,6 +28,14 @@ function loadFirst(arr){
         let title = document.createElement("h5");
         let image = document.createElement("img");
 
+        let wave1 = document.createElement("div");
+        let wave2 = document.createElement("div");
+        let wave3 = document.createElement("div");
+
+        wave1.classList.add("wave", "wave1");
+        wave2.classList.add("wave", "wave2");
+        wave3.classList.add("wave", "wave3");
+
         card.classList.add("card")
 
         const poke = arr[i];
@@ -41,6 +49,8 @@ function loadFirst(arr){
         card.dataset.name = name;
         title.innerHTML = name;
         image.src = img;
+
+        image.setAttribute("onerror", "this.onerror=null; this.src='img/pokeball.png';");
         
         let zeros = '';
         if(id < 10){ zeros = '000';}
@@ -48,6 +58,10 @@ function loadFirst(arr){
         else if(100 <= id && id < 1000){ zeros = '0'; }
         pokemon_id.innerHTML = '#' + zeros + id;
         card.appendChild(pokemon_id)
+
+        card.appendChild(wave1)
+        card.appendChild(wave2)
+        card.appendChild(wave3)
 
         card.appendChild(image)
         card.appendChild(title)
@@ -82,6 +96,8 @@ function loadFiltered(arr, filter){
             title.innerHTML = name;
             image.src = img;
 
+            image.setAttribute("onerror", "this.onerror=null; this.src='img/pokeball.png';");
+
             let zeros = '';
             if(id < 10){ zeros = '000';}
             else if(10 <= id && id < 100){ zeros = '00';}
@@ -108,6 +124,27 @@ function hideInfo() {
 function loadSinglePokemon(id){
     let card = document.querySelector(".info__card");
     card.style.display = 'block';
+
+    let typeColors = {
+        'grass' : '#78c850',
+        'poison' : '#a040a0',
+        'fire' : '#f08030',
+        'normal' : '#a8a878',
+        'water' : '#6890f0',
+        'electric' : '#f8d030',
+        'ice' : '#98d8d8',
+        'fighting' : '#c03028',
+        'ground' : '#e0c068',
+        'flying' : '#a890f0',
+        'psychic' : '#f85888',
+        'bug' : '#a8b820',
+        'rock' : '#b8a038',
+        'ghost' : '#705898',
+        'dark' : '#705848',
+        'dragon' : '#7038f8',
+        'steel' : '#b8b8d0',
+        'fairy' : '#f0b6bc',
+    }
     
     fetch("https://pokeapi.co/api/v2/pokemon/" + id)
     .then(response => response.json())
@@ -120,7 +157,7 @@ function loadSinglePokemon(id){
         let maxStats = {
             'hp': 255,
             'attack': 180,
-            'defense': 130,
+            'defense': 160,
             'special-attack': 180,
             'special-defense': 230,
             'speed': 180
@@ -150,13 +187,26 @@ function loadSinglePokemon(id){
             }
         });
 
+        document.querySelector(".imgs>img").setAttribute("onerror", "this.onerror=null; this.src='img/pokeball.png';");
         document.querySelector(".imgs>img").src = img;
         let typeContainer = document.querySelector(".pokemon__types");
         typeContainer.innerHTML = '';
 
         let types = data.types;
+        let count = 0;
+        let firstType;
+        let secondType;
 
         types.forEach(typeEl => {
+
+            count++;
+            if(count == 1){
+                firstType = typeEl.type.name;
+                console.log("First Type = " + firstType);
+            }else if(count == 2){
+                secondType = typeEl.type.name;
+                console.log("Second Type = " + secondType);
+            }
 
             let type = document.createElement("div");
             type.classList.add("type");
@@ -166,6 +216,21 @@ function loadSinglePokemon(id){
             typeContainer.appendChild(type)
 
         });
+
+
+        let firstColor = typeColors[firstType];
+        let secondColor = typeColors[secondType];
+
+        if(!secondColor){
+            secondColor = firstColor;
+        }
+
+        let back = `linear-gradient(315deg, ${secondColor} 35%, ${firstColor} 65%)`;
+        console.log(back);
+
+        let backgroundElem = document.querySelector("#background")
+        backgroundElem.style.background = back
+
 
         document.querySelector(".weight").innerHTML = weight / 10 + " Kg";
         document.querySelector(".height").innerHTML = height / 10 + " m";

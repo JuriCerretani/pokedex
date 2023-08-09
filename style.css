@@ -51,10 +51,12 @@ body{
     flex-direction: column;
     align-items: center;
     cursor: pointer;
+    position: relative;
 }
 
 .card:hover{
     transition: transform 0.2s ease-in-out;
+    transform: translateY(-5px);
     transform: scale(1.1);
 }
 
@@ -78,7 +80,7 @@ body{
     background: #fff;
     border-radius: 4px;
     box-shadow: 0px 0px 6px 2px #ddd;
-    padding: 1rem;
+    padding: 0px;
 }
 
 .info__card > .close{
@@ -86,104 +88,116 @@ body{
     right: 10px;
     top: 5px;
     border: 0;
-    background: #fff;
+    background: transparent;
     font-size: 1.4rem;
-    font-family: cursive;
     cursor: pointer;
-    color: #666;
+    color: #fff;
 }
 
 .info__card > .close:hover{
-    color: #000;
+    color: #666;
 }
 
 .pokemon__name{
     font-size: 2rem;
     text-align: center;
     text-transform: capitalize;
-    margin: 1rem auto;
+    padding: 1rem 0;
 }
 
 .pokemon__types{
     display: flex;
     justify-content: center;
     gap: 1rem;
+    padding: 0 3rem;
 }
 
 .pokemon__types .type{
-    /* border: 2px solid #666; */
+    box-shadow: 0px 0px 3px 1px #646464;
     border-radius: 8px;
     padding: 4px 6px;
     color: #fff;
     min-width: 45px;
-    background: #666;
+    /* background: #666; */
     text-align: center;
 }
 
-.pokemon__types .grass{
+.grass{
     background: #78c850;
 }
-.pokemon__types .poison{
+.poison{
     background: #a040a0;
 }
-.pokemon__types .fire{
+.fire{
     background: #f08030;
 }
-.pokemon__types .normal{
+.normal{
     background: #a8a878;
 }
-.pokemon__types .water{
+.water{
     background: #6890f0;
 }
-.pokemon__types .electric{
-    background: #78c850;
+.electric{
+    background: #f8d030;
 }
-.pokemon__types .ice{
-    background: #78c850;
+.ice{
+    background: #98d8d8;
 }
-.pokemon__types .fighting{
+.fighting{
     background: #c03028;
 }
-.pokemon__types .ground{
+.ground{
     background: #e0c068;
 }
-.pokemon__types .flying{
+.flying{
     background: #a890f0;
 }
-.pokemon__types .psychic{
+.psychic{
     background: #f85888;
 }
-.pokemon__types .bug{
+.bug{
     background: #a8b820;
 }
-.pokemon__types .rock{
+.rock{
     background: #b8a038;
 }
-.pokemon__types .ghost{
+.ghost{
     background: #705898;
 }
-.pokemon__types .dark{
+.dark{
     background: #705848;
 }
-.pokemon__types .dragon{
+.dragon{
     background: #7038f8;
 }
-.pokemon__types .steel{
+.steel{
     background: #b8b8d0;
 }
-.pokemon__types .fairy{
+.fairy{
     background: #f0b6bc;
 }
 
 
+.card img{
+    max-width: 100px;
+}
 
 .imgs{
     display: flex;
     justify-content: center;
+    padding: 0 3rem;
+}
+
+.imgs>img{
+    background: #fff;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    box-shadow: 0px 1px 3px 2px #d3d3d3;
 }
 
 .pokemon__desc{
     display: flex;
+    padding: 0 3rem;
 }
 
 .pokemon__desc>div{
@@ -193,6 +207,10 @@ body{
 
 .weight,.height{
     margin: 0.5rem auto;
+}
+
+.stats{
+    padding: 0 2rem 1rem 2rem;
 }
 
 .stats .bar{
@@ -211,6 +229,54 @@ body{
     border-radius: 8px;
     background: limegreen;
     transition: all 0.5s ease-in-out;
+}
+
+
+.wave{
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    height: 2px;
+    opacity: 0;
+    /* background-color: #000; */
+    overflow: hidden;
+    /* transition: all 0.8s ease-in-out; */
+}
+
+.card:hover .wave1{
+    animation: waves 2.1s infinite;
+}
+
+.card:hover .wave2{
+    animation: waves 2.1s 0.7s infinite;
+}
+
+.card:hover .wave3{
+    animation: waves 2.1s 1.4s infinite;
+}
+
+@keyframes waves {
+    0%{
+        opacity: 0;
+        bottom: -1px;
+    }
+
+    20%{
+        opacity: 1;
+        bottom: 0rem;
+    }
+
+    100%{
+        opacity: 0;
+        bottom: 1rem;
+    }
+}
+
+#background{
+    border-radius: 4px;
+    box-shadow: 0px 4px 2px 0px #b6b6b6;
+    margin-bottom: 1rem;
+    color: #fff;
 }
 
 @media screen and (max-width: 600px) {
