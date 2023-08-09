@@ -24,6 +24,7 @@ function loadFirst(arr){
     
     for (let i = 0; i < arr.length; i++) {
         let card = document.createElement("div");
+        let pokemon_id = document.createElement("div");
         let title = document.createElement("h5");
         let image = document.createElement("img");
 
@@ -40,6 +41,14 @@ function loadFirst(arr){
         card.dataset.name = name;
         title.innerHTML = name;
         image.src = img;
+        
+        let zeros = '';
+        if(id < 10){ zeros = '000';}
+        else if(10 <= id && id < 100){ zeros = '00';}
+        else if(100 <= id && id < 1000){ zeros = '0'; }
+        pokemon_id.innerHTML = '#' + zeros + id;
+        card.appendChild(pokemon_id)
+
         card.appendChild(image)
         card.appendChild(title)
         container.appendChild(card)
@@ -53,6 +62,7 @@ function loadFiltered(arr, filter){
 
     for (let i = 0; i < arr.length; i++) {
         let card = document.createElement("div");
+        let pokemon_id = document.createElement("div");
         let title = document.createElement("h5");
         let image = document.createElement("img");
 
@@ -71,6 +81,14 @@ function loadFiltered(arr, filter){
             card.dataset.name = name;
             title.innerHTML = name;
             image.src = img;
+
+            let zeros = '';
+            if(id < 10){ zeros = '000';}
+            else if(10 <= id && id < 100){ zeros = '00';}
+            else if(100 <= id && id < 1000){ zeros = '0'; }
+            pokemon_id.innerHTML = '#' + zeros + id;
+            card.appendChild(pokemon_id)
+
             card.appendChild(image)
             card.appendChild(title)
             container.appendChild(card)
