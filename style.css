@@ -83,7 +83,7 @@ body{
 
 .info__card > .close{
     position: absolute;
-    right: 5px;
+    right: 10px;
     top: 5px;
     border: 0;
     background: #fff;
@@ -226,5 +226,9 @@ body{
 
     .card img{
         max-width: 80px !important;
+    }
+
+    .info__card > .close{
+        font-family: sans-serif;
     }
 }
